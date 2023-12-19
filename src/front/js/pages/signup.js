@@ -8,7 +8,7 @@ export const Signup = () => {
 
 	return (
 		<div className="container mt-5">
-            <div className="col-6">
+            <div className="col-md-6">
                 <form>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
