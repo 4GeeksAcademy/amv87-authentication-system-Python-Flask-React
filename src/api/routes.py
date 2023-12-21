@@ -20,3 +20,8 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@app.route('/users', methods=['GET'])
+def get_todo():
+    json_text = jsonify(users)
+    return json_text
