@@ -17,7 +17,7 @@ export const Home = () => {
 						</svg> Welcome to Authentication System</h1>
 			<br></br>
 			<img src={Homepic} className="img-fluid rounded mb-4" alt="..."></img>
-			<p>Hello there.</p>
+			<p>Hello.</p>
 			<p>Please sign up or create a new user.</p>
 		</div>
 	);
