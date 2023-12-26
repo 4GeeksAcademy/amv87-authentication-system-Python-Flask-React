@@ -25,3 +25,8 @@ def handle_hello():
 def get_todo():
     json_text = jsonify(users)
     return json_text
+
+@app.route('/users', methods=['POST'])
+def get_todo():
+    json_text = jsonify(users)
+    return json_text
