@@ -35,3 +35,8 @@ def get_todo():
 def get_todo():
     json_text = jsonify(users)
     return json_text
+
+@app.route('/users', methods=['DELETE'])
+def get_todo():
+    json_text = jsonify(users)
+    return json_text
