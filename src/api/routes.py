@@ -21,22 +21,9 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
-@app.route('/users', methods=['GET'])
-def get_todo():
-    json_text = jsonify(users)
-    return json_text
+@api.route('/users', methods=['GET'])
+def get_users():
+    results = list(map(lambda user: user.serialize(), User.query.all()))
 
-@app.route('/users', methods=['POST'])
-def get_todo():
-    json_text = jsonify(users)
-    return json_text
+    return jsonify(results), 200
 
-@app.route('/users', methods=['PUT'])
-def get_todo():
-    json_text = jsonify(users)
-    return json_text
-
-@app.route('/users', methods=['DELETE'])
-def get_todo():
-    json_text = jsonify(users)
-    return json_text
