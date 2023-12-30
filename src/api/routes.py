@@ -27,3 +27,8 @@ def get_users():
 
     return jsonify(results), 200
 
+@api.route('/users/<int:user_id>', methods=['GET'])
+def get_user(user_id):
+    results = User.query.filter_by(id=user_id).first()
+
+    return jsonify(results.serialize()), 200
