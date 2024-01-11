@@ -40,14 +40,18 @@ def get_user(user_id):
 @api.route('/users', methods=['POST'])
 def create_user():
     request_body = request.get_json(force=True)
-    new_user = User(email=request_body["email"], password=request_body["password"], is_active=True)
-    db.session.add(new_user)
-    db.session.commit()
-    response_body = {
-        'msg': 'Your user has been added.'
-    }
+    user = User.query.filter_by(email=request_body["email"]).first()
 
-    return jsonify(response_body), 201
+    if user == None:
+        new_user = User(email=request_body["email"], password=request_body["password"], is_active=True)
+        db.session.add(new_user)
+        db.session.commit()
+        response_body = {
+            'msg': 'Your user has been added.'
+        }
+        return jsonify(response_body), 201
+    else:
+        return jsonify({"msg":"The user already exists."})
 
 @api.route("/login", methods=["POST"])
 def login():
