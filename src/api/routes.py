@@ -48,3 +48,17 @@ def create_user():
     }
 
     return jsonify(response_body), 201
+
+@api.route("/login", methods=["POST"])
+def login():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    user = User.query.filter_by(email=email).first()
+
+    if user == None:
+        return jsonify({"msg":"Could not find email."}), 401
+    if email != user.email or password != user.password:
+        return jsonify({"msg": "Bad email or password"}), 401
+
+    access_token = create_access_token(identity=email )
+    return jsonify(access_token=access_token)
