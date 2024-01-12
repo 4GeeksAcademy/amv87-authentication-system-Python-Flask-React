@@ -9,22 +9,9 @@ export const Signup = () => {
     const [password, setPassword] = useState('')
 
     function sendData(e){
-        e.preventDefault()
-        const requestOptions = {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(
-                {
-                    "email":email,
-                    "password":password
-                }
-            )
-          };
-          
-          fetch(process.env.BACKEND_URL + "/api/users", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+        e.preventDefault(email, password)
+        actions.signup(email, password)
+        
     }
 
 	return (
