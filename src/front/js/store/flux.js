@@ -21,6 +21,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			login: (email, password) => {
+				const requestOptions = {
+					method: 'POST',
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(
+						{
+							"email":email,
+							"password":password
+						}
+					)
+				};
+				  
+				fetch(process.env.BACKEND_URL + "/api/login", requestOptions)
+				.then(response => response.text())
+				.then(result => console.log(result))
+				.catch(error => console.log('error', error));
+			},
+
+			signup: (email, password) => {
+				const requestOptions = {
+					method: 'POST',
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(
+						{
+							"email":email,
+							"password":password
+						}
+					)
+				  };
+				  
+				  fetch(process.env.BACKEND_URL + "/api/users", requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log('error', error));
+			},
+
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
