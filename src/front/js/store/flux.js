@@ -35,9 +35,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				  
 				fetch(process.env.BACKEND_URL + "/api/login", requestOptions)
-				.then(response => response.text())
-				.then(result => console.log(result))
-				.catch(error => console.log('error', error));
+					.then(response => {
+						if(response.status == 200){
+							setStore({ auth: true });
+						}
+						return response.text()
+					})
+					.then(result => console.log(result))
+					.catch(error => console.log('error', error));
 			},
 
 			signup: (email, password) => {
