@@ -29,7 +29,9 @@ export const Navbar = () => {
 							<button className="btn btn-primary mx-2">Log In</button>
 						</Link>
 					}
-					{store.auth == true ? <button className="btn btn-danger">Log Out</button> : null}
+					{store.auth == false ? null : 
+						<button onClick={actions.logout} className="btn btn-danger">Log Out</button>
+					}
 				</div>
 			</div>
 		</nav>
