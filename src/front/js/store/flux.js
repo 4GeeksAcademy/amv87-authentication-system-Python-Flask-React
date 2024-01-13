@@ -57,8 +57,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					)
 				  };
 				  
-				  fetch(process.env.BACKEND_URL + "/api/users", requestOptions)
-					.then(response => response.text())
+				fetch(process.env.BACKEND_URL + "/api/users", requestOptions)
+					.then(response => {
+						if(response.status == 200){
+							setStore({ auth: true });
+						}
+						return response.text()
+					})
 					.then(result => console.log(result))
 					.catch(error => console.log('error', error));
 			},
