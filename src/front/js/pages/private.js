@@ -13,6 +13,7 @@ export const Private = () => {
 					<h1>Private</h1>
 					<br></br>
 					<p>Welcome to your private area.</p>
+					<p>Here's where your content will be shown.</p>
 				</>
 			}
 		</div>
